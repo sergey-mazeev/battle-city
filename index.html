@@ -13,9 +13,24 @@
   const {Loader} = window.GameEngine;
   const loader = new Loader;
   loader.addImage('BC', 'static/battle-city.png');
+  loader.addImage('BC2', 'static/battle-city-2.png');
+  loader.addImage('BC3', 'static/battle-city.png');
   loader.addJson('persons', 'static/persons.json');
+  loader.addJson('persons1', 'static/persons1.json');
   loader.load(() => {
-    console.log(loader);
+    const {images, jsons} = loader.resources;
+    Object.keys(images).map(key => {
+      const image = images[key];
+      image.setAttribute('alt', key);
+      image.style.width = '33%';
+      image.style.verticalAlign = 'middle';
+      document.body.append(image);
+    });
+
+    Object.keys(jsons).map(key => {
+      console.log(`json ${key}`);
+      console.log(jsons[key]);
+    });
   });
 </script>
 </body>
