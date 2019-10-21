@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Battle City</title>
+</head>
+<body>
+
+<script src="engine/Launcher.js"></script>
+<script>
+  const {Loader} = window.GameEngine;
+  const loader = new Loader;
+  loader.addImage('BC', 'static/battle-city.png');
+  loader.addJson('persons', 'static/persons.json');
+  loader.load(() => {
+    console.log(loader);
+  });
+</script>
+</body>
+</html>
