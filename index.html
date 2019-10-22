@@ -9,10 +9,33 @@
 <body>
 
 <script src="engine/Launcher.js"></script>
+<script src="engine/Renderer.js"></script>
+<script src="engine/Sprite.js"></script>
 <script>
-  const {Loader} = window.GameEngine;
+  const {Loader, Renderer} = window.GameEngine;
   const loader = new Loader;
-  loader.addImage('BC', 'static/battle-city.png');
+  const renderer = new Renderer({
+    width: 1000,
+    height: 500,
+    background: 'grey',
+    update: (arg) => {
+      renderer.draw((canvas, context) => {
+        context.fillStyle = 'black';
+        context.beginPath();
+        context.arc(
+          canvas.width / 2 + 100 * Math.cos(arg / 100),
+          canvas.height / 2 + 100 * Math.sin(arg / 100),
+          10,
+          0,
+          Math.PI * 2);
+        context.fill();
+      });
+    }
+  });
+
+  document.body.append(renderer.canvas);
+
+  /*loader.addImage('BC', 'static/battle-city.png');
   loader.addImage('BC2', 'static/battle-city-2.png');
   loader.addImage('BC3', 'static/battle-city.png');
   loader.addJson('persons', 'static/persons.json');
@@ -31,7 +54,7 @@
       console.log(`json ${key}`);
       console.log(jsons[key]);
     });
-  });
+  });*/
 </script>
 </body>
 </html>

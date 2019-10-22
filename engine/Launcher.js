@@ -1,4 +1,5 @@
 ;(function () {
+  'use strict';
 
   class Loader {
     constructor() {
@@ -19,6 +20,16 @@
     addImage(name, src) {
       const {images} = this.loadOrder;
       this.loadOrder.images = [...images, {name, src}];
+    }
+
+    // Метод получения загруженного изображения
+    getImage(name) {
+      return this.resources.images[name];
+    }
+
+    // Метод получения загруженного json
+    getJson(name) {
+      return this.resources.jsons[name];
     }
 
     // Метод добавления файла json в список для загрузки
